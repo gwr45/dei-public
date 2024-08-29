@@ -6,11 +6,6 @@
 *diff in diff job postings 
 use "/mnt/overflow/gwr45/DEI/f500_sp500_jobpost_foranalysis.dta", clear
 
-gen intern = 0 
-replace intern = 1 if strpos(lower(jobtitle_raw), "intern") > 0
-drop if intern==1
-replace diversity_flag = 0 if strpos(lower(jobtitle_raw), "sdei") > 0
-
 gen year = year(post_date_stata)
 gen month = month(post_date_stata)
 
@@ -67,10 +62,6 @@ coefplot F,  ///
 
 use "/mnt/overflow/gwr45/DEI/indivdual_position_sp500_f500_foranalysis.dta", replace
 
-gen intern = 0 
-replace intern = 1 if strpos(lower(jobtitle_raw), "intern") > 0
-drop if intern==1
-replace diversity_flag = 0 if strpos(lower(jobtitle_raw), "sdei") > 0
 
 gen year = year(post_date_stata)
 gen month = month(post_date_stata)
